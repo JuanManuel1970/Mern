@@ -27,6 +27,28 @@ app.post('/usuarios', async(req, res) => {
     await nuevoUsuario.save();
 });
 
+app.get('/clientes',async  (req, res) => {
+    const  personas = await Usuario.find({},
+        {
+        "nombre":1,
+        "apellido":1,
+        "email":1,
+        });
+    
+    
+  
+    console.log(personas);
+
+   
+    res.json({
+        personas,
+        
+    });
+})
+
+
+
+
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en el Puerto ${PORT}`);
 })
